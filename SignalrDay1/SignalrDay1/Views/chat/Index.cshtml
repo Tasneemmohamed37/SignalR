@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Chat</h1>
+
+<div>
+    <input type="text" id="txt"/>
+    <input type="button" value="Send" onclick="Send()"/>
+
+    <ul id="msgList">
+
+    </ul>
+</div>
+
+
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script>
+
+        let name = prompt("Enter Your Name");
+
+        // 1. define connection url so by defualt create proxy
+        var connection = new signalR.HubConnectionBuilder().withUrl("/chat").build();
+
+        // 2. start connection
+        connection.start();
+
+        // 3. callback function
+        connection.on("newmessage", function (user, msg) {
+            $("#msgList").append("<li>"+user +" : "+ msg+"</li>")
+        });
+
+        // 4. call service method
+        function Send() {
+            connection.invoke("SendMsg", name, $("#txt").val());
+        }
+
+    </script>
+}
+
