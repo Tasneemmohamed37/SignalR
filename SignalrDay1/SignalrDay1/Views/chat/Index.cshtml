@@ -7,13 +7,15 @@
 
 <div>
     <input type="text" id="txt"/>
-    <input type="button" value="Send" onclick="Send()"/>
+    <input type="button" value="Send" onclick="Send()"/> <br />
+    <input type="text" id="grpTxt"/>
+    <input type="button" value="Goin Group" onclick="Join()"/> <br />
+    <input type="button" value="Send To Group" onclick="SendToGroup()" />
 
     <ul id="msgList">
 
     </ul>
 </div>
-
 
 
 @section Scripts{
@@ -33,11 +35,27 @@
             $("#msgList").append("<li>"+user +" : "+ msg+"</li>")
         });
 
+        connection.on("newmember", function (user,groupName) {
+            $("#msgList").append("<li><i>" + user + " Successfuly join to group : " + groupName + "</i></li>")
+        });
+
+        connection.on("newMessageGroup", function (user, groupName, msg) {
+            $("#msgList").append("<li>" + user +" From Group " + groupName + " : " + msg + "</li>")
+        });
+
+
         // 4. call service method
         function Send() {
             connection.invoke("SendMsg", name, $("#txt").val());
         }
 
+        function Join() {
+            connection.invoke("joinGroup", $("#grpTxt").val(), name);
+        }
+
+        function SendToGroup() {
+            connection.invoke("SendToGroup", $("#grpTxt").val(), name, $("#txt").val());
+        }
     </script>
 }
 

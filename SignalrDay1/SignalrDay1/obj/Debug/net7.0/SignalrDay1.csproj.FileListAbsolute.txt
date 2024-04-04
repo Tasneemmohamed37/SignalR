@@ -222,3 +222,4 @@ C:\Users\MEDIA\Desktop\SignalR\SignalrDay1\SignalrDay1\obj\Debug\net7.0\SignalrD
 C:\Users\MEDIA\Desktop\SignalR\SignalrDay1\SignalrDay1\obj\Debug\net7.0\SignalrDay1.genruntimeconfig.cache
 C:\Users\MEDIA\Desktop\SignalR\SignalrDay1\SignalrDay1\obj\Debug\net7.0\ref\SignalrDay1.dll
 C:\Users\MEDIA\Desktop\SignalR\SignalrDay1\SignalrDay1\bin\Debug\net7.0\libman.json
+C:\Users\MEDIA\Desktop\SignalR\SignalrDay1\SignalrDay1\obj\Debug\net7.0\SignalrDay1.sourcelink.json

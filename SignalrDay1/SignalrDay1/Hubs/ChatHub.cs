@@ -11,5 +11,18 @@ namespace SignalrDay1.Hubs
             Clients.All.SendAsync("newmessage", name, msg);
         }
 
+        public void joinGroup(string groupName, string name)
+        {
+            Groups.AddToGroupAsync(Context.ConnectionId, groupName);
+
+            // notify group members
+            Clients.Group(groupName).SendAsync("newmember", name, groupName);
+        }
+
+        public void SendToGroup(string groupName, string name, string msg)
+        {
+            Clients.Group(groupName).SendAsync("newMessageGroup", name, groupName, msg);
+        }
+
     }
 }
